@@ -52,11 +52,10 @@ public class IterativeTraversals {
                 curr = top.right;
             }
         }
-
         return ret;
     }
 
-    public List<Integer> postorderTraversal(TreeNode root) {
+    public List<Integer> postorder(TreeNode root) {
         LinkedList<Integer> ret = new LinkedList<Integer>();
         if(root == null) {
             return ret;
@@ -86,10 +85,9 @@ public class IterativeTraversals {
         return ret;
     }
 
-    public class TreeNode {
+    private class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
     }
 }
