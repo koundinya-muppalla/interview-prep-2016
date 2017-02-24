@@ -124,10 +124,6 @@ public class IterativeTraversals {
         return ret;
     }
 
-
-    public static void main(String[] args) {
-
-    }
     private class TreeNode {
         int val;
         TreeNode left;
