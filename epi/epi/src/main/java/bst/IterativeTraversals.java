@@ -85,6 +85,49 @@ public class IterativeTraversals {
         return ret;
     }
 
+    public List<Integer> postOrder2(TreeNode root) {
+        List<Integer> ret = new ArrayList<Integer>();
+        if(root == null) {
+            return ret;
+        }
+
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode curr = root;
+        while(curr != null || !stack.isEmpty()) {
+            if(curr != null) {
+                // If right is not null, push right first
+                if(curr.right != null) {
+                    stack.push(curr.right);
+                }
+                // then push curr
+                stack.push(curr);
+
+                // keep going left
+                curr = curr.left;
+            } else {
+                TreeNode top = stack.pop();
+                // If stack is empty or the top.right is not equal to peek
+                // then add it to output
+                if(stack.isEmpty() || top.right != stack.peek()) {
+                    ret.add(top.val);
+                } else {
+                    // This is very important, top.right is equal to stack.peek(),
+                    // since we pushed right first and root next, so we need to process
+                    // right first, so pop it, make right as current and push the root
+                    // back to stack
+                    curr = stack.pop();
+                    stack.push(top);
+                }
+            }
+        }
+
+        return ret;
+    }
+
+
+    public static void main(String[] args) {
+
+    }
     private class TreeNode {
         int val;
         TreeNode left;
